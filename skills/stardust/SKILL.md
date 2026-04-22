@@ -18,12 +18,30 @@ Search, filter, categorize, and export the user's GitHub-starred repositories. T
 
 ## Setup (first use only)
 
+Before running any `stardust` command, check whether the CLI is on PATH:
+
+```bash
+which stardust
+```
+
+If it's missing (common right after `/plugin install`), run the bundled self-installer. It symlinks the script into `~/.local/bin/` (no sudo) and warns if that dir isn't on PATH yet:
+
+```bash
+python3 "$(dirname "$0")/stardust.py" install    # from the skill's scripts/ dir
+# OR, absolute path — Claude can resolve the plugin location:
+python3 <plugin-path>/skills/stardust/scripts/stardust.py install
+```
+
+Then the first real setup:
+
 ```bash
 stardust init      # create ~/.github-stars/ + sqlite db
 stardust sync      # pull all stars via `gh api` (takes ~30s per 1000 stars)
 ```
 
 `stardust sync` uses the authenticated `gh` CLI. No extra tokens needed.
+
+If the user sees a PATH warning after `install`, tell them the one-line export they need to add to `~/.zshrc` or `~/.bashrc`. The `install` command prints it explicitly.
 
 ## Workflow
 
@@ -35,6 +53,8 @@ stardust sync      # pull all stars via `gh api` (takes ~30s per 1000 stars)
 ## Commands
 
 ```bash
+stardust install [--target DIR]               # Symlink CLI onto PATH (first-run helper)
+stardust init                                 # Create ~/.github-stars/ + sqlite db
 stardust sync [--full]                        # Incremental sync; --full re-fetches READMEs
 stardust list [--language X] [--topic Y]      # Filter by language, topic, owner, date, category
          [--owner Z] [--since DATE] [--limit N]

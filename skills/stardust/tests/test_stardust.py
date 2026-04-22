@@ -311,6 +311,47 @@ def test_classify_only_hits_unclassified(synced):
 
 
 # ---------------------------------------------------------------------------
+# Self-install
+# ---------------------------------------------------------------------------
+
+def test_install_creates_symlink(tmp_path):
+    target_dir = tmp_path / "bin"
+    result = stardust.cmd_install(target_dir=target_dir)
+    assert result["action"] == "linked"
+    link = target_dir / "stardust"
+    assert link.is_symlink()
+    assert link.resolve() == Path(stardust.__file__).resolve()
+
+
+def test_install_is_idempotent(tmp_path):
+    target_dir = tmp_path / "bin"
+    stardust.cmd_install(target_dir=target_dir)
+    second = stardust.cmd_install(target_dir=target_dir)
+    assert second["action"] == "unchanged"
+
+
+def test_install_replaces_stale_symlink(tmp_path):
+    target_dir = tmp_path / "bin"
+    target_dir.mkdir()
+    stale = tmp_path / "stale.py"
+    stale.write_text("#!/usr/bin/env python3\n")
+    (target_dir / "stardust").symlink_to(stale)
+    result = stardust.cmd_install(target_dir=target_dir)
+    assert result["action"] == "linked"
+    assert (target_dir / "stardust").resolve() == Path(stardust.__file__).resolve()
+
+
+def test_cli_install_reports_path_warning(tmp_path, capsys, monkeypatch):
+    # Force a target that we know is not on PATH
+    target_dir = tmp_path / "not-on-path"
+    monkeypatch.setenv("PATH", "/usr/bin:/bin")
+    assert stardust.main(["install", "--target", str(target_dir)]) == 0
+    out = capsys.readouterr().out
+    assert "Linked" in out
+    assert "not on your PATH" in out
+
+
+# ---------------------------------------------------------------------------
 # CLI entry (argparse + end-to-end)
 # ---------------------------------------------------------------------------
 

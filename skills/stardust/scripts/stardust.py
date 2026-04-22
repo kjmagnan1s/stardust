@@ -521,6 +521,50 @@ def cmd_md(conn, out_dir: Path, since: str | None = None) -> dict:
 
 
 # ---------------------------------------------------------------------------
+# Self-install (symlink to a PATH directory)
+# ---------------------------------------------------------------------------
+
+def cmd_install(target_dir: Path | None = None) -> dict:
+    """Symlink this script to a directory on PATH.
+
+    Prefers `~/.local/bin/` (user-writable, no sudo). Creates the directory if
+    it doesn't exist. Reports whether the target is already on PATH so callers
+    can surface a shell-rc hint.
+    """
+    script_path = Path(__file__).resolve()
+    target_dir = (target_dir or Path.home() / ".local" / "bin").expanduser()
+    target_dir.mkdir(parents=True, exist_ok=True)
+    target = target_dir / "stardust"
+
+    # Ensure the script itself is executable.
+    try:
+        mode = script_path.stat().st_mode
+        script_path.chmod(mode | 0o111)
+    except Exception:
+        pass
+
+    already_correct = target.is_symlink() and target.resolve() == script_path
+    if already_correct:
+        action = "unchanged"
+    else:
+        if target.exists() or target.is_symlink():
+            target.unlink()
+        target.symlink_to(script_path)
+        action = "linked"
+
+    path_env = os.environ.get("PATH", "")
+    on_path = str(target_dir) in path_env.split(os.pathsep)
+
+    return {
+        "action": action,
+        "target": str(target),
+        "source": str(script_path),
+        "on_path": on_path,
+        "target_dir": str(target_dir),
+    }
+
+
+# ---------------------------------------------------------------------------
 # CLI
 # ---------------------------------------------------------------------------
 
@@ -548,6 +592,9 @@ def main(argv: list[str] | None = None) -> int:
     sub = p.add_subparsers(dest="cmd", required=True)
 
     sub.add_parser("init", help="Create data dir + db")
+
+    sp = sub.add_parser("install", help="Symlink this script onto PATH (~/.local/bin/stardust)")
+    sp.add_argument("--target", type=Path, help="Override target directory (default: ~/.local/bin)")
 
     sp = sub.add_parser("sync", help="Sync stars from GitHub")
     sp.add_argument("--fixture", type=Path, help="Path to JSON fixture (for testing)")
@@ -594,6 +641,17 @@ def main(argv: list[str] | None = None) -> int:
         conn = db()
         conn.close()
         print(f"Initialized at {DATA_DIR}")
+        return 0
+
+    if args.cmd == "install":
+        result = cmd_install(target_dir=getattr(args, "target", None))
+        verb = {"linked": "Linked", "unchanged": "Already linked"}[result["action"]]
+        print(f"{verb}: {result['target']} -> {result['source']}")
+        if not result["on_path"]:
+            print()
+            print(f"WARNING: {result['target_dir']} is not on your PATH.")
+            print("Add this to your shell rc (~/.zshrc or ~/.bashrc), then restart the shell:")
+            print(f'  export PATH="{result["target_dir"]}:$PATH"')
         return 0
 
     conn = db()

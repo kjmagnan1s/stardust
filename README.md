@@ -27,23 +27,23 @@ No external dependencies beyond the Python stdlib and the `gh` CLI.
 /plugin install stardust@stardust
 ```
 
-You'll still need to make the `stardust` CLI available on your PATH:
+That's it. The first time you ask Claude to do anything with your stars, the skill will run `stardust install` itself, which symlinks the CLI to `~/.local/bin/stardust` (no sudo needed). If `~/.local/bin/` isn't already on your PATH, the installer prints the one-line shell-rc export you need.
+
+If you'd rather set it up manually right away:
 
 ```bash
-ln -s ~/.claude/plugins/marketplaces/stardust/skills/stardust/scripts/stardust.py /usr/local/bin/stardust
-chmod +x ~/.claude/plugins/marketplaces/stardust/skills/stardust/scripts/stardust.py
+python3 ~/.claude/plugins/marketplaces/stardust/skills/stardust/scripts/stardust.py install
 ```
 
 ### Manual install (without Claude Code)
 
-Clone the repo and symlink the CLI:
-
 ```bash
 git clone https://github.com/kjmagnan1s/stardust.git
 cd stardust
-ln -s "$(pwd)/skills/stardust/scripts/stardust.py" /usr/local/bin/stardust
-chmod +x skills/stardust/scripts/stardust.py
+python3 skills/stardust/scripts/stardust.py install
 ```
+
+That runs the same self-installer and puts `stardust` at `~/.local/bin/stardust`.
 
 If you use another skills-compatible agent (Codex CLI, OpenCode), drop `skills/stardust/` into the agent's skills directory per its docs. The skill follows the [Agent Skills specification](https://agentskills.io/specification).
 
