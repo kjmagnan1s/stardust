@@ -276,7 +276,7 @@ def test_md_since_filter(synced, tmp_path):
 
 
 # ---------------------------------------------------------------------------
-# Classify (mocked — no live `claude -p`)
+# Classify (mocked, no live `claude -p`)
 # ---------------------------------------------------------------------------
 
 def test_classify_applies_results(synced):

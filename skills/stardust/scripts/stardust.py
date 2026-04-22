@@ -214,7 +214,7 @@ def sync(
             repo.get("pushed_at") or "",
             1 if repo.get("archived") else 0,
             readme_text,
-            None,  # category — set by classify
+            None,  # category, set by classify
             None,  # domain
             now,
         )
