@@ -1,0 +1,21 @@
+{
+  "name": "stardust",
+  "version": "0.1.0",
+  "description": "Search, filter, and export your GitHub stars locally. Turn your starred repos into a searchable second brain for Claude Code.",
+  "author": {
+    "name": "Kevin Magnan",
+    "url": "https://kevinjmagnan.com/"
+  },
+  "repository": "https://github.com/kjmagnan1s/stardust",
+  "license": "MIT",
+  "keywords": [
+    "github",
+    "stars",
+    "skill",
+    "claude",
+    "claude-code",
+    "knowledge-base",
+    "second-brain",
+    "cli"
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "name": "stardust",
+  "owner": {
+    "name": "Kevin Magnan",
+    "url": "https://kevinjmagnan.com/"
+  },
+  "plugins": [
+    {
+      "name": "stardust",
+      "source": "./",
+      "description": "Local search + markdown export for your GitHub stars",
+      "version": "0.1.0"
+    }
+  ]
+}

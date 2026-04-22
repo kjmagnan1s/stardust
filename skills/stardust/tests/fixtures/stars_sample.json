@@ -1,0 +1,104 @@
+[
+  {
+    "starred_at": "2026-04-18T14:22:03Z",
+    "repo": {
+      "full_name": "anthropics/claude-code",
+      "name": "claude-code",
+      "owner": {"login": "anthropics"},
+      "description": "Claude Code is Anthropic's official CLI for agentic coding.",
+      "language": "TypeScript",
+      "topics": ["llm", "agents", "cli", "claude"],
+      "stargazers_count": 12400,
+      "forks_count": 340,
+      "html_url": "https://github.com/anthropics/claude-code",
+      "homepage": "https://docs.anthropic.com/claude-code",
+      "pushed_at": "2026-04-20T09:00:00Z",
+      "archived": false
+    }
+  },
+  {
+    "starred_at": "2026-03-10T09:15:00Z",
+    "repo": {
+      "full_name": "tokio-rs/tokio",
+      "name": "tokio",
+      "owner": {"login": "tokio-rs"},
+      "description": "An asynchronous runtime for the Rust programming language.",
+      "language": "Rust",
+      "topics": ["async", "rust", "runtime", "io"],
+      "stargazers_count": 28000,
+      "forks_count": 2500,
+      "html_url": "https://github.com/tokio-rs/tokio",
+      "homepage": "https://tokio.rs",
+      "pushed_at": "2026-04-15T10:00:00Z",
+      "archived": false
+    }
+  },
+  {
+    "starred_at": "2025-11-02T18:40:12Z",
+    "repo": {
+      "full_name": "cloudflare/workers-rs",
+      "name": "workers-rs",
+      "owner": {"login": "cloudflare"},
+      "description": "Write Cloudflare Workers in 100% Rust via WebAssembly.",
+      "language": "Rust",
+      "topics": ["cloudflare", "workers", "wasm", "rust"],
+      "stargazers_count": 3400,
+      "forks_count": 180,
+      "html_url": "https://github.com/cloudflare/workers-rs",
+      "homepage": "",
+      "pushed_at": "2026-02-10T00:00:00Z",
+      "archived": false
+    }
+  },
+  {
+    "starred_at": "2025-08-15T11:02:44Z",
+    "repo": {
+      "full_name": "pola-rs/polars",
+      "name": "polars",
+      "owner": {"login": "pola-rs"},
+      "description": "Fast DataFrame library for Rust and Python powered by Apache Arrow.",
+      "language": "Rust",
+      "topics": ["dataframe", "rust", "python", "arrow", "data"],
+      "stargazers_count": 31000,
+      "forks_count": 2100,
+      "html_url": "https://github.com/pola-rs/polars",
+      "homepage": "https://pola.rs",
+      "pushed_at": "2026-04-19T00:00:00Z",
+      "archived": false
+    }
+  },
+  {
+    "starred_at": "2024-06-01T00:00:00Z",
+    "repo": {
+      "full_name": "archived-org/old-thing",
+      "name": "old-thing",
+      "owner": {"login": "archived-org"},
+      "description": "An archived repository kept for historical reasons.",
+      "language": "Python",
+      "topics": [],
+      "stargazers_count": 10,
+      "forks_count": 1,
+      "html_url": "https://github.com/archived-org/old-thing",
+      "homepage": "",
+      "pushed_at": "2023-01-01T00:00:00Z",
+      "archived": true
+    }
+  },
+  {
+    "starred_at": "2026-02-22T08:08:08Z",
+    "repo": {
+      "full_name": "jxnl/instructor",
+      "name": "instructor",
+      "owner": {"login": "jxnl"},
+      "description": "Structured outputs for LLMs. Pydantic + OpenAI + Anthropic.",
+      "language": "Python",
+      "topics": ["llm", "structured-output", "pydantic", "openai", "anthropic"],
+      "stargazers_count": 9000,
+      "forks_count": 700,
+      "html_url": "https://github.com/jxnl/instructor",
+      "homepage": "",
+      "pushed_at": "2026-04-01T00:00:00Z",
+      "archived": false
+    }
+  }
+]
