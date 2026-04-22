@@ -28,7 +28,7 @@ If it's missing (common right after `/plugin install`), run the bundled self-ins
 
 ```bash
 python3 "$(dirname "$0")/stardust.py" install    # from the skill's scripts/ dir
-# OR, absolute path — Claude can resolve the plugin location:
+# OR, absolute path. Claude can resolve the plugin location:
 python3 <plugin-path>/skills/stardust/scripts/stardust.py install
 ```
 
