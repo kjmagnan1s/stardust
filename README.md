@@ -1,10 +1,26 @@
 # stardust
 
+<p align="center">
+  <img src="assets/hero.png" alt="stardust" width="100%" />
+</p>
+
+<p align="center">
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-FFD66B?style=for-the-badge&labelColor=070A14" alt="MIT license" /></a>
+  <img src="https://img.shields.io/badge/Claude_Code-skill-5BE3FF?style=for-the-badge&labelColor=070A14" alt="Claude Code skill" />
+  <img src="https://img.shields.io/badge/deps-stdlib_only-8A7CFF?style=for-the-badge&labelColor=070A14" alt="Python stdlib only" />
+</p>
+
 Local search, filter, categorize, and export for your GitHub starred repositories. A Claude Code skill plus a self-contained Python CLI.
 
 Turn your starred repos into a searchable second brain. When you ask Claude "what have I starred about vector databases," stardust queries your local store instead of making Claude guess.
 
 Built as a sibling to [fieldtheory](https://github.com/fieldtheory-ai/fieldtheory-cli) (same idea, for X/Twitter bookmarks). Inspired by [StarListify](https://github.com/nhtlongcs/StarListify) for the README-based topic extraction and preference-driven categorization patterns.
+
+## See it work
+
+<p align="center">
+  <img src="assets/stardust.gif" alt="stardust searching your GitHub stars locally" width="100%" />
+</p>
 
 ## What it does
 
