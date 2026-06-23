@@ -4,12 +4,6 @@
   <img src="assets/hero.png" alt="stardust" width="100%" />
 </p>
 
-<p align="center">
-  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-FFD66B?style=for-the-badge&labelColor=070A14" alt="MIT license" /></a>
-  <img src="https://img.shields.io/badge/Claude_Code-skill-5BE3FF?style=for-the-badge&labelColor=070A14" alt="Claude Code skill" />
-  <img src="https://img.shields.io/badge/deps-stdlib_only-8A7CFF?style=for-the-badge&labelColor=070A14" alt="Python stdlib only" />
-</p>
-
 Local search, filter, categorize, and export for your GitHub starred repositories. A Claude Code skill plus a self-contained Python CLI.
 
 Turn your starred repos into a searchable second brain. When you ask Claude "what have I starred about vector databases," stardust queries your local store instead of making Claude guess.
